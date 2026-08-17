@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: oklch(0.9 0.003 260); font-family: 'Inter', sans-serif; }
+  </style>
+</helmet>
+
+<div style="display:flex; flex-wrap:wrap; gap:40px; padding:48px; align-items:flex-start;">
+
+  <!-- PRIMARY LOCKUP - DARK BG -->
+  <div style="width:640px; height:400px; background:oklch(0.12 0.004 260); display:flex; flex-direction:column; align-items:center; justify-content:center; box-shadow:0 20px 50px oklch(0 0 0 / 0.2);">
+    <svg width="72" height="72" viewBox="0 0 72 72" style="margin-bottom:24px;">
+      <rect x="1" y="1" width="70" height="70" fill="none" stroke="oklch(0.76 0.12 85)" stroke-width="1"/>
+      <path d="M36 16 L36 56 M20 36 L52 36" stroke="oklch(0.76 0.12 85)" stroke-width="1"/>
+      <rect x="30" y="30" width="12" height="12" fill="oklch(0.76 0.12 85)" transform="rotate(45 36 36)"/>
+    </svg>
+    <div style="font-family:'Playfair Display',serif; font-size:38px; font-weight:600; letter-spacing:5px; color:oklch(0.97 0.003 90);">DISTINCTION</div>
+    <div style="font-size:14px; font-weight:500; letter-spacing:7px; color:oklch(0.76 0.12 85); margin-top:10px;">CAR SERVICE</div>
+  </div>
+
+  <!-- LIGHT BG VARIANT -->
+  <div style="width:640px; height:400px; background:oklch(0.98 0.002 90); border:1px solid oklch(0.85 0.005 260); display:flex; flex-direction:column; align-items:center; justify-content:center;">
+    <svg width="72" height="72" viewBox="0 0 72 72" style="margin-bottom:24px;">
+      <rect x="1" y="1" width="70" height="70" fill="none" stroke="oklch(0.5 0.09 85)" stroke-width="1"/>
+      <path d="M36 16 L36 56 M20 36 L52 36" stroke="oklch(0.5 0.09 85)" stroke-width="1"/>
+      <rect x="30" y="30" width="12" height="12" fill="oklch(0.5 0.09 85)" transform="rotate(45 36 36)"/>
+    </svg>
+    <div style="font-family:'Playfair Display',serif; font-size:38px; font-weight:600; letter-spacing:5px; color:oklch(0.14 0.004 260);">DISTINCTION</div>
+    <div style="font-size:14px; font-weight:500; letter-spacing:7px; color:oklch(0.5 0.09 85); margin-top:10px;">CAR SERVICE</div>
+  </div>
+
+  <!-- HORIZONTAL LOCKUP -->
+  <div style="width:640px; height:200px; background:oklch(0.12 0.004 260); display:flex; align-items:center; justify-content:center; gap:24px; box-shadow:0 20px 50px oklch(0 0 0 / 0.2);">
+    <svg width="52" height="52" viewBox="0 0 72 72">
+      <rect x="1" y="1" width="70" height="70" fill="none" stroke="oklch(0.76 0.12 85)" stroke-width="1"/>
+      <path d="M36 16 L36 56 M20 36 L52 36" stroke="oklch(0.76 0.12 85)" stroke-width="1"/>
+      <rect x="30" y="30" width="12" height="12" fill="oklch(0.76 0.12 85)" transform="rotate(45 36 36)"/>
+    </svg>
+    <div>
+      <div style="font-family:'Playfair Display',serif; font-size:28px; font-weight:600; letter-spacing:3px; color:oklch(0.97 0.003 90); line-height:1;">DISTINCTION</div>
+      <div style="font-size:11px; font-weight:500; letter-spacing:5px; color:oklch(0.76 0.12 85); margin-top:6px;">CAR SERVICE</div>
+    </div>
+  </div>
+
+  <!-- ICON MARK ONLY (favicon/app icon use) -->
+  <div style="width:200px; height:200px; background:oklch(0.12 0.004 260); display:flex; align-items:center; justify-content:center; box-shadow:0 20px 50px oklch(0 0 0 / 0.2);">
+    <svg width="96" height="96" viewBox="0 0 72 72">
+      <rect x="1" y="1" width="70" height="70" fill="none" stroke="oklch(0.76 0.12 85)" stroke-width="1"/>
+      <path d="M36 16 L36 56 M20 36 L52 36" stroke="oklch(0.76 0.12 85)" stroke-width="1"/>
+      <rect x="30" y="30" width="12" height="12" fill="oklch(0.76 0.12 85)" transform="rotate(45 36 36)"/>
+    </svg>
+  </div>
+
+</div>
+
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="./image-slot.js"></script>
+  <style>
+    body { margin: 0; background: oklch(0.12 0.004 260); font-family: 'Inter', sans-serif; }
+    a { color: oklch(0.76 0.12 85); text-decoration: none; }
+    a:hover { color: oklch(0.85 0.1 85); }
+    ::selection { background: oklch(0.76 0.12 85); color: oklch(0.12 0.004 260); }
+    @media (max-width: 1150px) {
+      .dcs-nav-links { display: none !important; }
+      .dcs-menu-btn { display: flex !important; align-items: center; justify-content: center; }
+      .dcs-area-grid, .dcs-booking-grid { grid-template-columns: 1fr !important; }
+      .dcs-footer-grid { grid-template-columns: 1fr 1fr !important; }
+    }
+  </style>
+</helmet>
+
+<div style="background:oklch(0.12 0.004 260); color:oklch(0.97 0.003 90); overflow-x:hidden;">
+
+  <!-- NAV -->
+  <div style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:18px 32px; background:oklch(0.12 0.004 260 / 0.9); backdrop-filter:blur(10px); border-bottom:1px solid oklch(1 0 0 / 0.08);">
+    <div style="display:flex; align-items:center; gap:12px;">
+      <svg width="30" height="30" viewBox="0 0 72 72" style="flex-shrink:0;">
+        <rect x="1" y="1" width="70" height="70" fill="none" stroke="oklch(0.76 0.12 85)" stroke-width="1.5"/>
+        <path d="M36 16 L36 56 M20 36 L52 36" stroke="oklch(0.76 0.12 85)" stroke-width="1.5"/>
+        <rect x="30" y="30" width="12" height="12" fill="oklch(0.76 0.12 85)" transform="rotate(45 36 36)"/>
+      </svg>
+      <div style="font-family:'Playfair Display',serif; font-size:22px; letter-spacing:2px; font-weight:600; color:oklch(0.97 0.003 90);">DISTINCTION <span style="color:oklch(0.76 0.12 85);">CAR SERVICE</span></div>
+    </div>
+    <div class="dcs-nav-links" style="display:{{ navDisplay }}; align-items:center; gap:32px;">
+      <a href="#services" style="color:oklch(0.85 0.005 260); font-size:14px; font-weight:500;">Services</a>
+      <a href="#fleet" style="color:oklch(0.85 0.005 260); font-size:14px; font-weight:500;">Fleet</a>
+      <a href="#area" style="color:oklch(0.85 0.005 260); font-size:14px; font-weight:500;">Service Area</a>
+      <a href="#why" style="color:oklch(0.85 0.005 260); font-size:14px; font-weight:500;">Why Us</a>
+      <a href="#testimonials" style="color:oklch(0.85 0.005 260); font-size:14px; font-weight:500;">Reviews</a>
+      <a href="tel:+17743628115" style="color:oklch(0.97 0.003 90); font-size:14px; font-weight:600;">(774) 362-8115</a>
+      <a href="#booking" style="background:oklch(0.76 0.12 85); color:oklch(0.14 0.01 85); padding:10px 22px; border-radius:2px; font-size:14px; font-weight:700; letter-spacing:0.5px;">BOOK NOW</a>
+    </div>
+    <button class="dcs-menu-btn" onClick="{{ toggleMenu }}" style="display:{{ menuBtnDisplay }}; background:none; border:1px solid oklch(1 0 0 / 0.25); color:oklch(0.97 0.003 90); width:40px; height:40px; border-radius:2px; font-size:18px;">☰</button>
+  </div>
+
+  <sc-if value="{{ mobileMenuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex; flex-direction:column; gap:0; background:oklch(0.16 0.005 260); border-bottom:1px solid oklch(1 0 0 / 0.08); padding:8px 0;">
+      <a href="#services" onClick="{{ toggleMenu }}" style="padding:14px 32px; color:oklch(0.9 0.005 260); font-size:15px; border-bottom:1px solid oklch(1 0 0 / 0.06);">Services</a>
+      <a href="#fleet" onClick="{{ toggleMenu }}" style="padding:14px 32px; color:oklch(0.9 0.005 260); font-size:15px; border-bottom:1px solid oklch(1 0 0 / 0.06);">Fleet</a>
+      <a href="#area" onClick="{{ toggleMenu }}" style="padding:14px 32px; color:oklch(0.9 0.005 260); font-size:15px; border-bottom:1px solid oklch(1 0 0 / 0.06);">Service Area</a>
+      <a href="#why" onClick="{{ toggleMenu }}" style="padding:14px 32px; color:oklch(0.9 0.005 260); font-size:15px; border-bottom:1px solid oklch(1 0 0 / 0.06);">Why Us</a>
+      <a href="#testimonials" onClick="{{ toggleMenu }}" style="padding:14px 32px; color:oklch(0.9 0.005 260); font-size:15px; border-bottom:1px solid oklch(1 0 0 / 0.06);">Reviews</a>
+      <a href="tel:+17743628115" style="padding:14px 32px; color:oklch(0.97 0.003 90); font-size:15px; font-weight:700;">Call (774) 362-8115</a>
+      <a href="#booking" onClick="{{ toggleMenu }}" style="margin:14px 32px 6px; background:oklch(0.76 0.12 85); color:oklch(0.14 0.01 85); padding:12px; text-align:center; border-radius:2px; font-weight:700;">BOOK NOW</a>
+    </div>
+  </sc-if>
+
+  <!-- HERO -->
+  <div style="position:relative; height:92vh; min-height:640px; width:100%;">
+    <image-slot id="hero-img" shape="rect" placeholder="Hero photo — black luxury sedan/SUV at night, city backdrop" fit="cover" src="assets/hero-suv-night.png" style="position:absolute; inset:0; width:100%; height:100%;"></image-slot>
+    <div style="position:absolute; inset:0; background:linear-gradient(180deg, oklch(0.1 0.004 260 / 0.55) 0%, oklch(0.1 0.004 260 / 0.35) 45%, oklch(0.1 0.004 260 / 0.92) 100%); pointer-events:none;"></div>
+    <div style="position:relative; z-index:2; max-width:1200px; margin:0 auto; height:100%; display:flex; flex-direction:column; justify-content:center; padding:0 32px; pointer-events:none;">
+      <div style="text-transform:uppercase; letter-spacing:4px; font-size:13px; font-weight:600; color:oklch(0.76 0.12 85); margin-bottom:18px;">Premium Chauffeured Transportation</div>
+      <h1 style="font-family:'Playfair Display',serif; font-size:clamp(40px,7vw,84px); font-weight:600; line-height:1.05; margin:0 0 22px; max-width:760px;">Luxury on Wheels</h1>
+      <p style="font-size:19px; line-height:1.6; color:oklch(0.88 0.005 260); max-width:520px; margin:0 0 36px;">A premium Chevrolet Suburban with a professional chauffeur — for airport transfers, corporate travel, and every occasion that calls for distinction.</p>
+      <div style="display:flex; flex-wrap:wrap; align-items:center; gap:20px; pointer-events:auto;">
+        <a href="#booking" style="background:oklch(0.76 0.12 85); color:oklch(0.14 0.01 85); padding:18px 38px; border-radius:2px; font-size:16px; font-weight:700; letter-spacing:0.5px;">BOOK NOW</a>
+        <a href="tel:+17743628115" style="display:flex; align-items:center; gap:10px; color:oklch(0.98 0.003 90); font-size:19px; font-weight:600; border:1px solid oklch(1 0 0 / 0.3); padding:16px 28px; border-radius:2px;">
+          <span style="width:10px; height:10px; border-radius:50%; background:oklch(0.76 0.12 85); display:inline-block;"></span>
+          (774) 362-8115
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div id="services" style="max-width:1200px; margin:0 auto; padding:120px 32px 100px;">
+    <div style="text-align:center; margin-bottom:64px;">
+      <div style="text-transform:uppercase; letter-spacing:3px; font-size:13px; font-weight:600; color:oklch(0.76 0.12 85); margin-bottom:14px;">What We Offer</div>
+      <h2 style="font-family:'Playfair Display',serif; font-size:clamp(30px,4vw,46px); font-weight:600; margin:0;">Our Services</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:28px;">
+      <sc-for list="{{ services }}" as="svc" hint-placeholder-count="4">
+        <div style="background:oklch(0.17 0.005 260); border:1px solid oklch(1 0 0 / 0.08); border-radius:4px; padding:38px 30px; transition:border-color 0.2s;" style-hover="border-color:oklch(0.76 0.12 85 / 0.5);">
+          <div style="width:56px; height:56px; border-radius:50%; border:1px solid oklch(0.76 0.12 85 / 0.6); display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
+            <span style="font-family:'Playfair Display',serif; font-size:20px; font-weight:600; color:oklch(0.76 0.12 85);">{{ svc.letter }}</span>
+          </div>
+          <h3 style="font-size:19px; font-weight:600; margin:0 0 12px; color:oklch(0.97 0.003 90);">{{ svc.title }}</h3>
+          <p style="font-size:15px; line-height:1.6; color:oklch(0.68 0.008 260); margin:0;">{{ svc.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- FLEET -->
+  <div id="fleet" style="background:oklch(0.15 0.005 260); padding:100px 0 110px; border-top:1px solid oklch(1 0 0 / 0.06); border-bottom:1px solid oklch(1 0 0 / 0.06);">
+    <div style="max-width:1200px; margin:0 auto; padding:0 32px;">
+      <div style="text-align:center; margin-bottom:64px;">
+        <div style="text-transform:uppercase; letter-spacing:3px; font-size:13px; font-weight:600; color:oklch(0.76 0.12 85); margin-bottom:14px;">The Vehicle</div>
+        <h2 style="font-family:'Playfair Display',serif; font-size:clamp(30px,4vw,46px); font-weight:600; margin:0;">One Vehicle, Every Detail Considered</h2>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); max-width:420px; margin:0 auto; gap:28px;">
+        <sc-for list="{{ fleet }}" as="car" hint-placeholder-count="1">
+          <div style="background:oklch(0.12 0.004 260); border:1px solid oklch(1 0 0 / 0.08); border-radius:4px; overflow:hidden;">
+            <image-slot id="{{ car.imgId }}" shape="rect" placeholder="{{ car.placeholder }}" src="{{ car.src }}" fit="cover" style="width:100%; height:190px; display:block;"></image-slot>
+            <div style="padding:24px;">
+              <h3 style="font-size:18px; font-weight:600; margin:0 0 10px; color:oklch(0.97 0.003 90);">{{ car.name }}</h3>
+              <div style="display:flex; gap:16px; font-size:13.5px; color:oklch(0.68 0.008 260);">
+                <span>👤 {{ car.passengers }}</span>
+                <span>🧳 {{ car.luggage }}</span>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICE AREA -->
+  <div id="area" style="max-width:1200px; margin:0 auto; padding:110px 32px;">
+    <div class="dcs-area-grid" style="display:grid; grid-template-columns:1.1fr 1fr; gap:60px; align-items:center;">
+      <div>
+        <div style="text-transform:uppercase; letter-spacing:3px; font-size:13px; font-weight:600; color:oklch(0.76 0.12 85); margin-bottom:14px;">Where We Drive</div>
+        <h2 style="font-family:'Playfair Display',serif; font-size:clamp(28px,3.6vw,40px); font-weight:600; margin:0 0 22px;">Serving the Greater Metro Area</h2>
+        <p style="font-size:16px; line-height:1.7; color:oklch(0.72 0.008 260); margin:0 0 30px;">From downtown boardrooms to regional airports, our chauffeurs cover the metro area and beyond. Outside our standard radius? Ask about custom long-distance service.</p>
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <sc-for list="{{ areas }}" as="a" hint-placeholder-count="4">
+            <div style="display:flex; align-items:center; gap:14px;">
+              <span style="width:8px; height:8px; background:oklch(0.76 0.12 85); border-radius:50%; flex-shrink:0;"></span>
+              <span style="font-size:16px; color:oklch(0.9 0.005 260);">{{ a }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <iframe src="https://www.google.com/maps?q=Greater+Metro+Area&output=embed" style="width:100%; height:380px; border:0; border-radius:4px; filter:grayscale(0.3) contrast(1.1);" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Service area map"></iframe>
+    </div>
+  </div>
+
+  <!-- WHY CHOOSE US -->
+  <div id="why" style="background:oklch(0.15 0.005 260); padding:110px 0; border-top:1px solid oklch(1 0 0 / 0.06); border-bottom:1px solid oklch(1 0 0 / 0.06);">
+    <div style="max-width:1200px; margin:0 auto; padding:0 32px;">
+      <div style="text-align:center; margin-bottom:64px;">
+        <div style="text-transform:uppercase; letter-spacing:3px; font-size:13px; font-weight:600; color:oklch(0.76 0.12 85); margin-bottom:14px;">The Distinction Standard</div>
+        <h2 style="font-family:'Playfair Display',serif; font-size:clamp(30px,4vw,46px); font-weight:600; margin:0;">Why Choose Us</h2>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:36px;">
+        <sc-for list="{{ trust }}" as="t" hint-placeholder-count="4">
+          <div style="text-align:center;">
+            <div style="width:64px; height:64px; margin:0 auto 20px; border-radius:50%; background:oklch(0.76 0.12 85 / 0.1); display:flex; align-items:center; justify-content:center;">
+              <div style="width:14px; height:14px; background:oklch(0.76 0.12 85); transform:rotate(45deg);"></div>
+            </div>
+            <h3 style="font-size:17px; font-weight:600; margin:0 0 8px; color:oklch(0.97 0.003 90);">{{ t.title }}</h3>
+            <p style="font-size:14.5px; line-height:1.6; color:oklch(0.66 0.008 260); margin:0;">{{ t.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div id="testimonials" style="max-width:1200px; margin:0 auto; padding:110px 32px;">
+    <div style="text-align:center; margin-bottom:64px;">
+      <div style="text-transform:uppercase; letter-spacing:3px; font-size:13px; font-weight:600; color:oklch(0.76 0.12 85); margin-bottom:14px;">Client Experiences</div>
+      <h2 style="font-family:'Playfair Display',serif; font-size:clamp(30px,4vw,46px); font-weight:600; margin:0;">What Our Clients Say</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:28px;">
+      <sc-for list="{{ testimonials }}" as="rev" hint-placeholder-count="3">
+        <div style="background:oklch(0.17 0.005 260); border:1px solid oklch(1 0 0 / 0.08); border-radius:4px; padding:34px;">
+          <div style="color:oklch(0.76 0.12 85); font-size:16px; letter-spacing:2px; margin-bottom:18px;">★★★★★</div>
+          <p style="font-size:15.5px; line-height:1.7; color:oklch(0.85 0.005 260); margin:0 0 22px; font-style:italic;">"{{ rev.quote }}"</p>
+          <div style="font-size:14px; font-weight:600; color:oklch(0.97 0.003 90);">{{ rev.name }}</div>
+          <div style="font-size:13px; color:oklch(0.6 0.008 260);">{{ rev.role }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- BOOKING -->
+  <div id="booking" style="background:oklch(0.1 0.004 260); padding:110px 0; border-top:1px solid oklch(1 0 0 / 0.08);">
+    <div class="dcs-booking-grid" style="max-width:1200px; margin:0 auto; padding:0 32px; display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:start;">
+      <div>
+        <div style="text-transform:uppercase; letter-spacing:3px; font-size:13px; font-weight:600; color:oklch(0.76 0.12 85); margin-bottom:14px;">Reserve Your Ride</div>
+        <h2 style="font-family:'Playfair Display',serif; font-size:clamp(28px,3.6vw,40px); font-weight:600; margin:0 0 22px;">Book in Under a Minute</h2>
+        <p style="font-size:16px; line-height:1.7; color:oklch(0.7 0.008 260); margin:0 0 36px;">Prefer to talk it through? Call or email us directly — a reservation specialist is standing by.</p>
+        <div style="display:flex; flex-direction:column; gap:22px;">
+          <a href="tel:+17743628115" style="display:flex; align-items:center; gap:16px; color:oklch(0.97 0.003 90);">
+            <span style="width:48px; height:48px; border-radius:50%; border:1px solid oklch(0.76 0.12 85 / 0.5); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <span style="width:10px; height:10px; background:oklch(0.76 0.12 85); border-radius:50%;"></span>
+            </span>
+            <span>
+              <div style="font-size:13px; color:oklch(0.6 0.008 260);">Call anytime, 24/7</div>
+              <div style="font-size:22px; font-weight:700;">(774) 362-8115</div>
+            </span>
+          </a>
+          <a href="mailto:reservations@distinctioncarservice.com" style="display:flex; align-items:center; gap:16px; color:oklch(0.97 0.003 90);">
+            <span style="width:48px; height:48px; border-radius:50%; border:1px solid oklch(0.76 0.12 85 / 0.5); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <span style="width:10px; height:10px; background:oklch(0.76 0.12 85); transform:rotate(45deg);"></span>
+            </span>
+            <span>
+              <div style="font-size:13px; color:oklch(0.6 0.008 260);">Email reservations</div>
+              <div style="font-size:17px; font-weight:600;">reservations@distinctioncarservice.com</div>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <sc-if value="{{ formSubmitted }}" hint-placeholder-val="{{ false }}">
+        <div style="background:oklch(0.17 0.005 260); border:1px solid oklch(0.76 0.12 85 / 0.4); border-radius:4px; padding:48px; text-align:center;">
+          <div style="width:56px; height:56px; margin:0 auto 20px; border-radius:50%; background:oklch(0.76 0.12 85 / 0.12); display:flex; align-items:center; justify-content:center;">
+            <span style="color:oklch(0.76 0.12 85); font-size:26px;">✓</span>
+          </div>
+          <h3 style="font-size:20px; font-weight:600; margin:0 0 10px;">Request Received</h3>
+          <p style="font-size:15px; color:oklch(0.7 0.008 260); margin:0;">A reservation specialist will confirm your ride shortly. For immediate assistance, call (774) 362-8115.</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ formNotSubmitted }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ handleSubmit }}" style="background:oklch(0.17 0.005 260); border:1px solid oklch(1 0 0 / 0.08); border-radius:4px; padding:40px; display:flex; flex-direction:column; gap:18px;">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
+            <input name="pickup" required placeholder="Pickup location" style="background:oklch(0.12 0.004 260); border:1px solid oklch(1 0 0 / 0.12); border-radius:2px; padding:14px 16px; color:oklch(0.97 0.003 90); font-size:14.5px; grid-column:span 2;" />
+            <input name="dropoff" required placeholder="Drop-off location" style="background:oklch(0.12 0.004 260); border:1px solid oklch(1 0 0 / 0.12); border-radius:2px; padding:14px 16px; color:oklch(0.97 0.003 90); font-size:14.5px; grid-column:span 2;" />
+            <input name="date" required type="date" style="background:oklch(0.12 0.004 260); border:1px solid oklch(1 0 0 / 0.12); border-radius:2px; padding:14px 16px; color:oklch(0.97 0.003 90); font-size:14.5px; color-scheme:dark;" />
+            <input name="time" required type="time" style="background:oklch(0.12 0.004 260); border:1px solid oklch(1 0 0 / 0.12); border-radius:2px; padding:14px 16px; color:oklch(0.97 0.003 90); font-size:14.5px; color-scheme:dark;" />
+            <input name="name" required placeholder="Full name" style="background:oklch(0.12 0.004 260); border:1px solid oklch(1 0 0 / 0.12); border-radius:2px; padding:14px 16px; color:oklch(0.97 0.003 90); font-size:14.5px; grid-column:span 2;" />
+            <input name="phone" required type="tel" placeholder="Phone number" style="background:oklch(0.12 0.004 260); border:1px solid oklch(1 0 0 / 0.12); border-radius:2px; padding:14px 16px; color:oklch(0.97 0.003 90); font-size:14.5px;" />
+            <input name="email" required type="email" placeholder="Email address" style="background:oklch(0.12 0.004 260); border:1px solid oklch(1 0 0 / 0.12); border-radius:2px; padding:14px 16px; color:oklch(0.97 0.003 90); font-size:14.5px;" />
+          </div>
+          <button type="submit" style="background:oklch(0.76 0.12 85); color:oklch(0.14 0.01 85); border:none; padding:17px; border-radius:2px; font-size:15.5px; font-weight:700; letter-spacing:0.5px; cursor:pointer; margin-top:6px;">REQUEST RESERVATION</button>
+          <p style="font-size:12.5px; color:oklch(0.55 0.008 260); text-align:center; margin:0;">We'll confirm availability within 15 minutes during business hours.</p>
+        </form>
+      </sc-if>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background:oklch(0.09 0.004 260); border-top:1px solid oklch(1 0 0 / 0.08); padding:64px 0 32px;">
+    <div style="max-width:1200px; margin:0 auto; padding:0 32px;">
+      <div class="dcs-footer-grid" style="display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:40px; margin-bottom:48px;">
+        <div>
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+            <svg width="28" height="28" viewBox="0 0 72 72" style="flex-shrink:0;">
+              <rect x="1" y="1" width="70" height="70" fill="none" stroke="oklch(0.76 0.12 85)" stroke-width="1.5"/>
+              <path d="M36 16 L36 56 M20 36 L52 36" stroke="oklch(0.76 0.12 85)" stroke-width="1.5"/>
+              <rect x="30" y="30" width="12" height="12" fill="oklch(0.76 0.12 85)" transform="rotate(45 36 36)"/>
+            </svg>
+            <div style="font-family:'Playfair Display',serif; font-size:20px; letter-spacing:1.5px; font-weight:600;">DISTINCTION <span style="color:oklch(0.76 0.12 85);">CAR SERVICE</span></div>
+          </div>
+          <p style="font-size:14px; line-height:1.7; color:oklch(0.58 0.008 260); max-width:280px; margin:0 0 20px;">Premium chauffeured transportation. Licensed, insured, and available 24/7.</p>
+          <div style="display:flex; gap:12px;">
+            <a href="#" aria-label="Instagram" style="width:36px; height:36px; border-radius:50%; border:1px solid oklch(1 0 0 / 0.15); display:flex; align-items:center; justify-content:center; color:oklch(0.85 0.005 260); font-size:13px;">IG</a>
+            <a href="#" aria-label="Facebook" style="width:36px; height:36px; border-radius:50%; border:1px solid oklch(1 0 0 / 0.15); display:flex; align-items:center; justify-content:center; color:oklch(0.85 0.005 260); font-size:13px;">FB</a>
+            <a href="#" aria-label="LinkedIn" style="width:36px; height:36px; border-radius:50%; border:1px solid oklch(1 0 0 / 0.15); display:flex; align-items:center; justify-content:center; color:oklch(0.85 0.005 260); font-size:13px;">IN</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:13px; font-weight:700; letter-spacing:1px; color:oklch(0.97 0.003 90); margin-bottom:18px;">COMPANY</div>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <a href="#services" style="font-size:14px; color:oklch(0.6 0.008 260);">Services</a>
+            <a href="#fleet" style="font-size:14px; color:oklch(0.6 0.008 260);">Fleet</a>
+            <a href="#testimonials" style="font-size:14px; color:oklch(0.6 0.008 260);">Reviews</a>
+            <a href="#booking" style="font-size:14px; color:oklch(0.6 0.008 260);">Book Now</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:13px; font-weight:700; letter-spacing:1px; color:oklch(0.97 0.003 90); margin-bottom:18px;">SERVICE AREA</div>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <span style="font-size:14px; color:oklch(0.6 0.008 260);">Downtown &amp; Financial District</span>
+            <span style="font-size:14px; color:oklch(0.6 0.008 260);">Metro &amp; Regional Airports</span>
+            <span style="font-size:14px; color:oklch(0.6 0.008 260);">Suburbs &amp; Event Venues</span>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:13px; font-weight:700; letter-spacing:1px; color:oklch(0.97 0.003 90); margin-bottom:18px;">CONTACT</div>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <a href="tel:+17743628115" style="font-size:14px; color:oklch(0.6 0.008 260);">(774) 362-8115</a>
+            <a href="mailto:reservations@distinctioncarservice.com" style="font-size:14px; color:oklch(0.6 0.008 260);">reservations@distinctioncarservice.com</a>
+            <div style="display:inline-flex; align-items:center; gap:8px; margin-top:6px; padding:8px 12px; border:1px solid oklch(0.76 0.12 85 / 0.35); border-radius:2px; width:fit-content;">
+              <span style="width:8px; height:8px; background:oklch(0.76 0.12 85); border-radius:50%;"></span>
+              <span style="font-size:12px; color:oklch(0.85 0.005 260); font-weight:600;">Licensed &amp; Insured</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="border-top:1px solid oklch(1 0 0 / 0.08); padding-top:24px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px;">
+        <span style="font-size:13px; color:oklch(0.5 0.008 260);">© 2026 Distinction Car Service. All rights reserved.</span>
+        <span style="font-size:13px; color:oklch(0.5 0.008 260);">Luxury on Wheels</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    mobileMenuOpen: false,
+    formSubmitted: false,
+  };
+
+  toggleMenu = () => this.setState(s => ({ mobileMenuOpen: !s.mobileMenuOpen }));
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.setState({ formSubmitted: true });
+  };
+
+  renderVals() {
+    return {
+      navDisplay: 'flex',
+      menuBtnDisplay: 'none',
+      mobileMenuOpen: this.state.mobileMenuOpen,
+      toggleMenu: this.toggleMenu,
+      formSubmitted: this.state.formSubmitted,
+      formNotSubmitted: !this.state.formSubmitted,
+      handleSubmit: this.handleSubmit,
+      services: [
+        { letter: 'A', title: 'Airport Transfers', desc: 'Reliable, flight-tracked pickups and drop-offs at every major terminal — no waiting, no surprises.' },
+        { letter: 'C', title: 'Corporate Travel', desc: 'Polished, punctual service for executives, roadshows, and client meetings.' },
+        { letter: 'E', title: 'Special Events & Weddings', desc: 'Make an entrance. Elegant transportation for weddings, galas, and milestone celebrations.' },
+        { letter: 'H', title: 'Hourly Chauffeur', desc: 'A dedicated chauffeur and vehicle at your disposal, billed by the hour, for full flexibility.' },
+      ],
+      fleet: [
+        { imgId: 'fleet-suv', name: 'Chevrolet Suburban', passengers: '1–6 Passengers', luggage: '4 Bags', placeholder: 'Black Chevrolet Suburban', src: 'assets/fleet-suv-city.png' },
+      ],
+      areas: [
+        'Downtown & Financial District',
+        'International & Regional Airports',
+        'Uptown & Surrounding Suburbs',
+        'Event Venues, Wineries & Resorts',
+      ],
+      trust: [
+        { title: 'Licensed & Insured', desc: 'Fully licensed livery operation with comprehensive commercial insurance.' },
+        { title: 'Professional Chauffeurs', desc: 'Background-checked, trained, and dressed to represent your standards.' },
+        { title: 'On-Time Guarantee', desc: 'We track flights and traffic so your ride is always ready when you are.' },
+        { title: '24/7 Availability', desc: 'Book any hour, any day — dispatch and support never close.' },
+      ],
+      testimonials: [
+        { quote: 'Flawless from booking to drop-off. Our driver was waiting at baggage claim and the car was immaculate.', name: 'Rachel M.', role: 'Frequent Flyer' },
+        { quote: 'We use Distinction for every client visit. Punctual, discreet, and always professional.', name: 'David K.', role: 'Corporate Client' },
+        { quote: 'They made our wedding day feel even more special. The limousine was stunning and the chauffeur was so kind.', name: 'Priya & Sam', role: 'Wedding Clients' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>
