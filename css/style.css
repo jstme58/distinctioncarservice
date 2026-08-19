@@ -1,0 +1,170 @@
+:root {
+  --bg: oklch(0.12 0.004 260);
+  --bg-alt: oklch(0.15 0.005 260);
+  --bg-card: oklch(0.17 0.005 260);
+  --bg-darkest: oklch(0.09 0.004 260);
+  --bg-nav: oklch(0.12 0.004 260 / 0.9);
+  --bg-mobile-menu: oklch(0.16 0.005 260);
+  --gold: oklch(0.76 0.12 85);
+  --gold-hover: oklch(0.85 0.1 85);
+  --gold-dark: oklch(0.14 0.01 85);
+  --text: oklch(0.97 0.003 90);
+  --text-body: oklch(0.85 0.005 260);
+  --border: oklch(1 0 0 / 0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+}
+
+a { color: var(--gold); text-decoration: none; }
+a:hover { color: var(--gold-hover); }
+::selection { background: var(--gold); color: var(--bg-dark, oklch(0.12 0.004 260)); }
+
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+h1, h2, h3 { font-family: 'Playfair Display', serif; margin: 0; }
+
+/* NAV */
+.dcs-nav {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 32px; background: var(--bg-nav);
+  backdrop-filter: blur(10px); border-bottom: 1px solid var(--border);
+}
+.dcs-logo { display: flex; align-items: center; gap: 12px; }
+.dcs-logo-text { font-family: 'Playfair Display', serif; font-size: 22px; letter-spacing: 2px; font-weight: 600; color: var(--text); }
+.dcs-logo-text span { color: var(--gold); }
+.dcs-nav-links { display: flex; align-items: center; gap: 32px; }
+.dcs-nav-links a { color: oklch(0.85 0.005 260); font-size: 14px; font-weight: 500; }
+.dcs-nav-links a.phone { color: var(--text); font-weight: 600; }
+.dcs-nav-links a.book-btn { background: var(--gold); color: var(--gold-dark); padding: 10px 22px; border-radius: 2px; font-weight: 700; letter-spacing: 0.5px; }
+.dcs-menu-btn { display: none; background: none; border: 1px solid oklch(1 0 0 / 0.25); color: var(--text); width: 40px; height: 40px; border-radius: 2px; font-size: 18px; cursor: pointer; align-items: center; justify-content: center; }
+
+.dcs-mobile-menu { display: none; flex-direction: column; gap: 0; background: var(--bg-mobile-menu); border-bottom: 1px solid var(--border); padding: 8px 0; }
+.dcs-mobile-menu.open { display: flex; }
+.dcs-mobile-menu a { padding: 14px 32px; color: oklch(0.9 0.005 260); font-size: 15px; border-bottom: 1px solid oklch(1 0 0 / 0.06); }
+.dcs-mobile-menu a.phone { color: var(--text); font-weight: 700; }
+.dcs-mobile-menu a.book-btn { margin: 14px 32px 6px; background: var(--gold); color: var(--gold-dark); padding: 12px; text-align: center; border-radius: 2px; font-weight: 700; border-bottom: none; }
+
+/* HERO */
+.dcs-hero { position: relative; height: 92vh; min-height: 640px; width: 100%; overflow: hidden; }
+.dcs-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.dcs-hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, oklch(0.1 0.004 260 / 0.55) 0%, oklch(0.1 0.004 260 / 0.35) 45%, oklch(0.1 0.004 260 / 0.92) 100%); pointer-events: none; }
+.dcs-hero-content { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 0 32px; }
+.dcs-eyebrow { text-transform: uppercase; letter-spacing: 4px; font-size: 13px; font-weight: 600; color: var(--gold); margin-bottom: 18px; }
+.dcs-hero-content h1 { font-size: clamp(40px, 7vw, 84px); font-weight: 600; line-height: 1.05; margin: 0 0 22px; max-width: 760px; }
+.dcs-hero-content p { font-size: 19px; line-height: 1.6; color: oklch(0.88 0.005 260); max-width: 520px; margin: 0 0 36px; }
+.dcs-hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; }
+.dcs-btn-gold { background: var(--gold); color: var(--gold-dark); padding: 18px 38px; border-radius: 2px; font-size: 16px; font-weight: 700; letter-spacing: 0.5px; }
+.dcs-btn-outline { display: flex; align-items: center; gap: 10px; color: oklch(0.98 0.003 90); font-size: 19px; font-weight: 600; border: 1px solid oklch(1 0 0 / 0.3); padding: 16px 28px; border-radius: 2px; }
+.dcs-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); display: inline-block; }
+
+/* SECTION HEADERS */
+.dcs-section-head { text-align: center; margin-bottom: 64px; }
+.dcs-section-head h2 { font-size: clamp(30px, 4vw, 46px); font-weight: 600; }
+
+/* SERVICES */
+#services { padding: 120px 32px 100px; }
+.dcs-services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 28px; }
+.dcs-service-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 38px 30px; transition: border-color 0.2s; }
+.dcs-service-card:hover { border-color: oklch(0.76 0.12 85 / 0.5); }
+.dcs-service-letter { width: 56px; height: 56px; border-radius: 50%; border: 1px solid oklch(0.76 0.12 85 / 0.6); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: var(--gold); }
+.dcs-service-card h3 { font-size: 19px; font-weight: 600; margin: 0 0 12px; }
+.dcs-service-card p { font-size: 15px; line-height: 1.6; color: oklch(0.68 0.008 260); margin: 0; }
+
+/* FLEET */
+#fleet { background: var(--bg-alt); padding: 100px 0 110px; border-top: 1px solid oklch(1 0 0 / 0.06); border-bottom: 1px solid oklch(1 0 0 / 0.06); }
+.dcs-fleet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); max-width: 420px; margin: 0 auto; gap: 28px; }
+.dcs-fleet-card { background: var(--bg); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+.dcs-fleet-card img { width: 100%; height: 190px; object-fit: cover; display: block; }
+.dcs-fleet-info { padding: 24px; }
+.dcs-fleet-info h3 { font-size: 18px; font-weight: 600; margin: 0 0 10px; }
+.dcs-fleet-meta { display: flex; gap: 16px; font-size: 13.5px; color: oklch(0.68 0.008 260); }
+
+/* SERVICE AREA */
+#area { padding: 110px 32px; }
+.dcs-area-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center; }
+#area h2 { font-size: clamp(28px, 3.6vw, 40px); font-weight: 600; margin: 0 0 22px; }
+#area > .wrap > .dcs-area-grid > div:first-child p { font-size: 16px; line-height: 1.7; color: oklch(0.72 0.008 260); margin: 0 0 30px; }
+.dcs-area-list { display: flex; flex-direction: column; gap: 16px; }
+.dcs-area-item { display: flex; align-items: center; gap: 14px; }
+.dcs-area-item .dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+.dcs-area-item span:last-child { font-size: 16px; color: oklch(0.9 0.005 260); }
+#area iframe { width: 100%; height: 380px; border: 0; border-radius: 4px; filter: grayscale(0.3) contrast(1.1); }
+
+/* WHY US */
+#why { background: var(--bg-alt); padding: 110px 0; border-top: 1px solid oklch(1 0 0 / 0.06); border-bottom: 1px solid oklch(1 0 0 / 0.06); }
+.dcs-trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 36px; }
+.dcs-trust-item { text-align: center; }
+.dcs-trust-icon { width: 64px; height: 64px; margin: 0 auto 20px; border-radius: 50%; background: oklch(0.76 0.12 85 / 0.1); display: flex; align-items: center; justify-content: center; }
+.dcs-trust-icon span { width: 14px; height: 14px; background: var(--gold); transform: rotate(45deg); display: block; }
+.dcs-trust-item h3 { font-size: 17px; font-weight: 600; margin: 0 0 8px; }
+.dcs-trust-item p { font-size: 14.5px; line-height: 1.6; color: oklch(0.66 0.008 260); margin: 0; }
+
+/* TESTIMONIALS */
+#testimonials { padding: 110px 32px; }
+.dcs-testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
+.dcs-testimonial-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 34px; }
+.dcs-stars { color: var(--gold); font-size: 16px; letter-spacing: 2px; margin-bottom: 18px; }
+.dcs-testimonial-card p { font-size: 15.5px; line-height: 1.7; color: oklch(0.85 0.005 260); margin: 0 0 22px; font-style: italic; }
+.dcs-testimonial-name { font-size: 14px; font-weight: 600; }
+.dcs-testimonial-role { font-size: 13px; color: oklch(0.6 0.008 260); }
+
+/* BOOKING */
+#booking { background: oklch(0.1 0.004 260); padding: 110px 0; border-top: 1px solid var(--border); }
+.dcs-booking-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: start; }
+#booking h2 { font-size: clamp(28px, 3.6vw, 40px); font-weight: 600; margin: 0 0 22px; }
+#booking > .wrap > .dcs-booking-grid > div:first-child > p { font-size: 16px; line-height: 1.7; color: oklch(0.7 0.008 260); margin: 0 0 36px; }
+.dcs-contact-list { display: flex; flex-direction: column; gap: 22px; }
+.dcs-contact-item { display: flex; align-items: center; gap: 16px; color: var(--text); }
+.dcs-contact-icon { width: 48px; height: 48px; border-radius: 50%; border: 1px solid oklch(0.76 0.12 85 / 0.5); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.dcs-contact-icon .dot { width: 10px; height: 10px; background: var(--gold); border-radius: 50%; }
+.dcs-contact-icon .diamond { width: 10px; height: 10px; background: var(--gold); transform: rotate(45deg); }
+.dcs-contact-label { font-size: 13px; color: oklch(0.6 0.008 260); }
+.dcs-contact-value { font-size: 22px; font-weight: 700; }
+.dcs-contact-value.small { font-size: 17px; font-weight: 600; }
+
+.dcs-booking-form { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 40px; display: flex; flex-direction: column; gap: 18px; }
+.dcs-booking-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.dcs-booking-form input { background: var(--bg); border: 1px solid oklch(1 0 0 / 0.12); border-radius: 2px; padding: 14px 16px; color: var(--text); font-size: 14.5px; color-scheme: dark; font-family: inherit; }
+.dcs-booking-form input.full { grid-column: span 2; }
+.dcs-booking-form button { background: var(--gold); color: var(--gold-dark); border: none; padding: 17px; border-radius: 2px; font-size: 15.5px; font-weight: 700; letter-spacing: 0.5px; cursor: pointer; margin-top: 6px; }
+.dcs-booking-form .disclaimer { font-size: 12.5px; color: oklch(0.55 0.008 260); text-align: center; margin: 0; }
+
+.dcs-booking-success { background: var(--bg-card); border: 1px solid oklch(0.76 0.12 85 / 0.4); border-radius: 4px; padding: 48px; text-align: center; }
+.dcs-booking-success .check { width: 56px; height: 56px; margin: 0 auto 20px; border-radius: 50%; background: oklch(0.76 0.12 85 / 0.12); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 26px; }
+.dcs-booking-success h3 { font-size: 20px; font-weight: 600; margin: 0 0 10px; }
+.dcs-booking-success p { font-size: 15px; color: oklch(0.7 0.008 260); margin: 0; }
+
+/* FOOTER */
+footer { background: var(--bg-darkest); border-top: 1px solid var(--border); padding: 64px 0 32px; }
+.dcs-footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+.dcs-footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.dcs-footer-logo-text { font-family: 'Playfair Display', serif; font-size: 20px; letter-spacing: 1.5px; font-weight: 600; }
+.dcs-footer-grid p { font-size: 14px; line-height: 1.7; color: oklch(0.58 0.008 260); max-width: 280px; margin: 0 0 20px; }
+.dcs-social-links { display: flex; gap: 12px; }
+.dcs-social-links a { width: 36px; height: 36px; border-radius: 50%; border: 1px solid oklch(1 0 0 / 0.15); display: flex; align-items: center; justify-content: center; color: oklch(0.85 0.005 260); font-size: 13px; }
+.dcs-footer-heading { font-size: 13px; font-weight: 700; letter-spacing: 1px; color: var(--text); margin-bottom: 18px; }
+.dcs-footer-links { display: flex; flex-direction: column; gap: 12px; }
+.dcs-footer-links a, .dcs-footer-links span { font-size: 14px; color: oklch(0.6 0.008 260); }
+.dcs-footer-badge { display: inline-flex; align-items: center; gap: 8px; margin-top: 6px; padding: 8px 12px; border: 1px solid oklch(0.76 0.12 85 / 0.35); border-radius: 2px; width: fit-content; }
+.dcs-footer-badge .dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; }
+.dcs-footer-badge span:last-child { font-size: 12px; color: oklch(0.85 0.005 260); font-weight: 600; }
+.dcs-footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; color: oklch(0.5 0.008 260); }
+
+@media (max-width: 1150px) {
+  .dcs-nav-links { display: none !important; }
+  .dcs-menu-btn { display: flex !important; }
+  .dcs-area-grid, .dcs-booking-grid { grid-template-columns: 1fr !important; }
+  .dcs-footer-grid { grid-template-columns: 1fr 1fr !important; }
+}
+
+@media (max-width: 560px) {
+  .dcs-booking-form-grid { grid-template-columns: 1fr !important; }
+  .dcs-booking-form input.full { grid-column: span 1 !important; }
+}
