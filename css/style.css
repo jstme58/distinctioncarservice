@@ -145,7 +145,9 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; margin: 0; }
 .dcs-booking-form input { background: var(--bg); border: 1px solid oklch(1 0 0 / 0.12); border-radius: 2px; padding: 14px 16px; color: var(--text); font-size: 14.5px; color-scheme: dark; font-family: inherit; }
 .dcs-booking-form input.full { grid-column: span 2; }
 .dcs-booking-form button { background: var(--gold); color: var(--gold-dark); border: none; padding: 17px; border-radius: 2px; font-size: 15.5px; font-weight: 700; letter-spacing: 0.5px; cursor: pointer; margin-top: 6px; }
+.dcs-booking-form button:disabled { opacity: 0.6; cursor: not-allowed; }
 .dcs-booking-form .disclaimer { font-size: 12.5px; color: oklch(0.55 0.008 260); text-align: center; margin: 0; }
+.dcs-booking-error { font-size: 13.5px; color: oklch(0.7 0.15 25); background: oklch(0.7 0.15 25 / 0.1); border: 1px solid oklch(0.7 0.15 25 / 0.3); border-radius: 2px; padding: 12px 14px; margin: 0; text-align: center; }
 
 .dcs-booking-success { background: var(--bg-card); border: 1px solid oklch(0.76 0.12 85 / 0.4); border-radius: 4px; padding: 48px; text-align: center; }
 .dcs-booking-success .check { width: 56px; height: 56px; margin: 0 auto 20px; border-radius: 50%; background: oklch(0.76 0.12 85 / 0.12); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 26px; }

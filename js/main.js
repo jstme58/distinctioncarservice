@@ -1,3 +1,10 @@
+// Formspree endpoint for the booking form. Create a free account at
+// https://formspree.io using reservations@distinctioncarservice.com,
+// create a new form, and paste its endpoint URL below (looks like
+// "https://formspree.io/f/xxxxabcd"). Formspree emails each submission
+// to the account that owns the form -- no server of our own required.
+var BOOKING_FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+
 document.addEventListener('DOMContentLoaded', function () {
   var menuBtn = document.querySelector('.dcs-menu-btn');
   var mobileMenu = document.querySelector('.dcs-mobile-menu');
@@ -15,14 +22,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var form = document.getElementById('booking-form');
   var success = document.getElementById('booking-success');
+  var errorBox = document.getElementById('booking-error');
+  var submitBtn = form.querySelector('button[type="submit"]');
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    // NOTE: this only swaps the UI to a confirmation state — it does not
-    // send the booking anywhere. Wire this up to a real form backend
-    // (e.g. Formspree, a mailto fallback, or a server endpoint) before
-    // relying on it to receive reservations.
-    form.style.display = 'none';
-    success.style.display = 'block';
+    errorBox.style.display = 'none';
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'SENDING...';
+
+    fetch(BOOKING_FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      body: new FormData(form),
+    })
+      .then(function (res) {
+        if (res.ok) {
+          form.style.display = 'none';
+          success.style.display = 'block';
+        } else {
+          throw new Error('Form submission failed with status ' + res.status);
+        }
+      })
+      .catch(function (err) {
+        console.error('[booking-form]', err);
+        errorBox.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'REQUEST RESERVATION';
+      });
   });
 });
