@@ -3,7 +3,7 @@
 // create a new form, and paste its endpoint URL below (looks like
 // "https://formspree.io/f/xxxxabcd"). Formspree emails each submission
 // to the account that owns the form -- no server of our own required.
-var BOOKING_FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+var BOOKING_FORM_ENDPOINT = 'https://formspree.io/f/xeajpwjl';
 
 document.addEventListener('DOMContentLoaded', function () {
   var menuBtn = document.querySelector('.dcs-menu-btn');
